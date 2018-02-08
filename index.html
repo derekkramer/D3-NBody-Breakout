@@ -43,6 +43,13 @@
                     vy: (x - width / 2) * 0.006
                 };
             });
+
+            const force = d3.forceSimulation(nodes)
+                .drag(0)
+                .alphaDecay(0)
+                .force("charge", d3.forceManyBody().strength(3))
+                .force("center", d3.forceCenter(width / 2, height / 2))
+                .on("tick", ticked);
         </script>
     </body>
 
