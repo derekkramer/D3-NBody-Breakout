@@ -29,6 +29,20 @@
             const n = 2,
                 pi = Math.PI,
                 tau = 2 * pi;
+
+            const nodes = d3.range(n).map(() => {
+                const r = Math.random() * width / 3,
+                    a = Math.random() * tau,
+                    x = width / 2 + r * Math.cos(a),
+                    y = height / 2 + r * Math.sin(a);
+
+                return {
+                    x: x,
+                    y: y,
+                    vx: (height / 2 - y) * 0.006,
+                    vy: (x - width / 2) * 0.006
+                };
+            });
         </script>
     </body>
 
