@@ -50,6 +50,20 @@
                 .force("charge", d3.forceManyBody().strength(3))
                 .force("center", d3.forceCenter(width / 2, height / 2))
                 .on("tick", ticked);
+
+            function ticked() {
+                context.clearRect(0, 0, width, height);
+                context.lineWidth = 4;
+                context.lineCap = "square";
+
+                for (let i = 0, node, vx, vy; i < n; ++i) {
+                    node = nodes[i];
+                    context.beginPath();
+                    context.moveTo(node.x, node.y);
+                    context.lineTo(node.x + node.vx * 3, node.y + node.vy * 3);
+                    context.stroke();
+                }
+            }
         </script>
     </body>
 
